@@ -1,19 +1,14 @@
-const express = require('express'); // Import the Express module to create the server
+const express = require('express');
 
-// Function to start the Login server with OAuth
 function startLoginServer() {
-    const app = express(); // Create a new Express application
+    const app = express();
 
-    // Define a route for the Login server
-    app.get('/', (req, res) => {
-        res.send('Login Server with OAuth\n'); // Send the response body
+    app.get('/login', (req, res) => {
+        res.send('Login Server with OAuth');
     });
 
-    // Listen on port 8003 for incoming requests
-    app.listen(8003, () => {
-        console.log(`Login Server with OAuth started by Worker ${process.pid} on port 8003`); // Log that the server has started
-    });
+    const port = 8001; // Unique port for Login Server
+    app.listen(port, () => console.log(`Login Server with OAuth started on port ${port}...`));
 }
 
-// Export the function so it can be used in the main file
 module.exports = startLoginServer;
